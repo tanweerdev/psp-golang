@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "a0a77295-da6b-479f-bdb0-5ab146b20e54",
+		"name": "PSP-Golang",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2497180"
+	},
+	"item": [
+		{
+			"name": "valid card even",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card_number\": \"5555555555554444\",\n    \"expiry_date\": \"12/25\",\n    \"cvv\": \"123\",\n    \"amount\": 100.00,\n    \"currency\": \"USD\",\n    \"merchant_id\": \"merchant123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "invalid card",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card_number\": \"1234567890123456\",  // Invalid card number (less than 16 digits)\n    \"expiry_date\": \"12/25\",\n    \"cvv\": \"123\",\n    \"amount\": 100.00,\n    \"currency\": \"USD\",\n    \"merchant_id\": \"merchant123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "valid card odd",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card_number\": \"79927398713\",\n    \"expiry_date\": \"12/25\",\n    \"cvv\": \"123\",\n    \"amount\": 100.00,\n    \"currency\": \"USD\",\n    \"merchant_id\": \"merchant123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "even card transactions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"card_number\": \"5555555555554444\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "odd card transactions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"card_number\": \"79927398713\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
